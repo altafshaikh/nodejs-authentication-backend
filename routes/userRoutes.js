@@ -4,6 +4,7 @@ const { signUpUser, loginUser } = require("../controllers/userController");
 const {
   checkRequestBody,
   checkConfirmPassword,
+  validatePassword,
   isEmailValid,
   isEmailUnique,
   generatePassHash,
@@ -12,16 +13,15 @@ const {
 
 const userRoute = express.Router();
 
-userRoute
-  .route("/signup")
-  .post(
-    checkRequestBody,
-    checkConfirmPassword,
-    isEmailValid,
-    isEmailUnique,
-    generatePassHash,
-    signUpUser
-  );
+userRoute.route("/signup").post(
+  checkRequestBody,
+  checkConfirmPassword,
+  // validatePassword,
+  isEmailValid,
+  isEmailUnique,
+  generatePassHash,
+  signUpUser
+);
 userRoute.route("/login").post(checkRequestBody, isUserRegistered, loginUser);
 
 module.exports = userRoute;

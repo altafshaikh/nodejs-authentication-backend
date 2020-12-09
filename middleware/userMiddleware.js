@@ -53,6 +53,19 @@ const checkConfirmPassword = (req, res, next) => {
   next();
 };
 
+const validatePassword = (req, res, next) => {
+  const re = /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[^a-zA-Z0-9])(?!.*\s).{8,15}$/;
+  const isValid = req.body.password.match(re);
+  if (!isValid) {
+    return sendErrorMessage(
+      new AppError(400, "unsuccessful", "Password Validation Fail"),
+      req,
+      res
+    );
+  }
+  next();
+};
+
 const isEmailValid = (req, res, next) => {
   const re = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
   const isValid = re.test(req.body.email.toLowerCase());
@@ -115,3 +128,4 @@ module.exports.isEmailUnique = isEmailUnique;
 module.exports.isEmailValid = isEmailValid;
 module.exports.generatePassHash = generatePassHash;
 module.exports.isUserRegistered = isUserRegistered;
+module.exports.validatePassword = validatePassword;

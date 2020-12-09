@@ -28,5 +28,11 @@
     "email": "tony@avengers.com",
     "password": "$2a$10$/Z7lUqBEeglVFbSoT0SYzuO8MZvtrLeAgeJPSBQOP5C5eeCmNPFPe",
     "createdAt": "Wed Dec 09 2020 20:23:47 GMT+0530 (India Standard Time)"
+  },
+  {
+    "userID": "c7oczqylkm80",
+    "email": "hulk@avengers.com",
+    "password": "$2a$10$SYievBYGzNb1OPNBeyW/4.6OiwT.3x2VUJx9r7VrorDIuQWqKU3om",
+    "createdAt": "Wed Dec 09 2020 20:57:28 GMT+0530 (India Standard Time)"
   }
 ]
