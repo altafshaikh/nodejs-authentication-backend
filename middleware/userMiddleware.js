@@ -24,7 +24,6 @@ const checkRequestBody = (req, res, next) => {
         res
       );
   }
-  //   let validationArray = ["email", "password", "confirmPassword"];
   let result = validationArray.every((key) => {
     return req.body[key] && req.body[key].trim().length;
   });

@@ -3,6 +3,8 @@ const bcrypt = require("bcryptjs");
 const fs = require("fs");
 const path = require("path");
 
+const AppError = require("../helper/appErrorClass");
+const sendErrorMessage = require("../helper/sendError");
 const sendResponse = require("../helper/sendResponse");
 
 let fileName = path.join(__dirname, "../data", "users.json");
@@ -15,8 +17,11 @@ const signUpUser = (req, res, next) => {
   users.push(user);
   fs.writeFile(fileName, JSON.stringify(users, null, 2), (err) => {
     if (err) {
-      res.status(500).json({ status: "Internal Error" });
-      return err;
+      return sendErrorMessage(
+        new AppError(500, "Internal Error", "Unable to complete the Request"),
+        req,
+        res
+      );
     }
     sendResponse(201, "Signup successful", user, req, res);
   });
@@ -30,11 +35,20 @@ const loginUser = async (req, res, next) => {
     );
     if (!result) {
       res.status(201).json({ message: "You Entered wrong Password" });
-      return;
+
+      return sendErrorMessage(
+        new AppError(401, "unsuccessful", "You Entered wrong Password"),
+        req,
+        res
+      );
     }
     sendResponse(201, "Login Successful", {}, req, res);
   } catch (error) {
-    res.status(500).json({ message: "Internal Error" });
+    return sendErrorMessage(
+      new AppError(500, "Internal Error", "Unable to complete the Request"),
+      req,
+      res
+    );
   }
 };
 
