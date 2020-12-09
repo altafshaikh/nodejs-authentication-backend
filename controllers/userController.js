@@ -34,7 +34,24 @@ const signUpUser = (req, res, next) => {
     res.status(201).json({ status: "Signup successful", data: [user] });
   });
 };
-const loginUser = (req, res, next) => {};
+const loginUser = (req, res, next) => {
+  const { email, password } = req.body;
+  const user = users.find((user) => {
+    return user.email == email;
+  });
+
+  bcrypt.compare(password, user.password, function (err, result) {
+    if (err) {
+      res.status(500).json({ message: "Internal Error" });
+      return err;
+    }
+    if (!result) {
+      res.status(201).json({ message: "You Entered wrong Password" });
+      return;
+    }
+    res.status(201).json({ message: "Login Successful" });
+  });
+};
 
 // export controllers
 module.exports.signUpUser = signUpUser;
