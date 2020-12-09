@@ -16,7 +16,7 @@ const checkRequestBody = (req, res, next) => {
       validationArray = ["email", "password", "confirmPassword"];
       break;
     case "/login":
-      validationArray = ["email", "password", "confirmPassword"];
+      validationArray = ["email", "password"];
       break;
     default:
       return sendErrorMessage(
