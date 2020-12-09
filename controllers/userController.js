@@ -1,10 +1,7 @@
 const User = require("../models/user");
-const util = require("util");
 const bcrypt = require("bcryptjs");
 const fs = require("fs");
 const path = require("path");
-
-const confirmHash = require("../helper/confirmHash");
 
 let fileName = path.join(__dirname, "../data", "users.json");
 let users = JSON.parse(fs.readFileSync(fileName, "utf-8"));
@@ -22,18 +19,20 @@ const signUpUser = (req, res, next) => {
     res.status(201).json({ status: "Signup successful", data: [user] });
   });
 };
-const loginUser = (req, res, next) => {
-  const { email, password } = req.body;
-  const user = users.find((user) => {
-    return user.email == email;
-  });
-
-  const result = confirmHash(password, user.password);
-  if (!result) {
-    res.status(201).json({ message: "You Entered wrong Password" });
-    return;
+const loginUser = async (req, res, next) => {
+  try {
+    const result = await bcrypt.compare(
+      req.body.password,
+      req.currentUser.password
+    );
+    if (!result) {
+      res.status(201).json({ message: "You Entered wrong Password" });
+      return;
+    }
+    res.status(201).json({ message: "Login Successful" });
+  } catch (error) {
+    res.status(500).json({ message: "Internal Error" });
   }
-  res.status(201).json({ message: "Login Successful" });
 };
 
 // export controllers

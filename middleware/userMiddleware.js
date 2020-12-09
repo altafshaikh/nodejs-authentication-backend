@@ -42,7 +42,6 @@ const checkRequestBody = (req, res, next) => {
 
 const checkConfirmPassword = (req, res, next) => {
   if (req.body.password !== req.body.confirmPassword) {
-    res.status(400);
     return sendErrorMessage(
       new AppError(
         400,
@@ -76,7 +75,6 @@ const isEmailUnique = (req, res, next) => {
   });
 
   if (user) {
-    res.status(400).json({ message: "User already registered" });
     return sendErrorMessage(
       new AppError(400, "unsuccessful", "User already registered"),
       req,
@@ -95,9 +93,27 @@ const generatePassHash = async (req, res, next) => {
   next();
 };
 
+const isUserRegistered = (req, res, next) => {
+  const { email } = req.body;
+  const user = users.find((user) => {
+    return user.email == email;
+  });
+
+  if (!user) {
+    return sendErrorMessage(
+      new AppError(400, "unsuccessful", "User not found with this email"),
+      req,
+      res
+    );
+  }
+  req.currentUser = user;
+  next();
+};
+
 // export middlewares
 module.exports.checkRequestBody = checkRequestBody;
 module.exports.checkConfirmPassword = checkConfirmPassword;
 module.exports.isEmailUnique = isEmailUnique;
 module.exports.isEmailValid = isEmailValid;
 module.exports.generatePassHash = generatePassHash;
+module.exports.isUserRegistered = isUserRegistered;
