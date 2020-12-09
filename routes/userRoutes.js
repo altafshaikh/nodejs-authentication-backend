@@ -5,6 +5,7 @@ const {
   checkRequestBody,
   checkConfirmPassword,
   isEmailValid,
+  isEmailUnique,
   generatePassHash,
 } = require("../middleware/userMiddleware");
 
@@ -16,6 +17,7 @@ userRoute
     checkRequestBody,
     checkConfirmPassword,
     isEmailValid,
+    isEmailUnique,
     generatePassHash,
     signUpUser
   );
