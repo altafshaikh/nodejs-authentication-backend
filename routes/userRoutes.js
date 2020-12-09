@@ -1,11 +1,10 @@
 const express = require("express");
-const {
-  signUpUser,
-  loginUser,
-  generatePassHash,
-} = require("../controllers/userController");
+const { signUpUser, loginUser } = require("../controllers/userController");
 
-const { isEmailValid } = require("../middleware/userMiddleware");
+const {
+  isEmailValid,
+  generatePassHash,
+} = require("../middleware/userMiddleware");
 
 const userRoute = express.Router();
 

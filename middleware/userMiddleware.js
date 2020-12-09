@@ -1,5 +1,3 @@
-const User = require("../models/user");
-const util = require("util");
 const bcrypt = require("bcryptjs");
 const fs = require("fs");
 const path = require("path");
@@ -12,7 +10,22 @@ let fileName = path.join(__dirname, "../data", "users.json");
 let users = JSON.parse(fs.readFileSync(fileName, "utf-8"));
 
 const checkRequestBody = (req, res, next) => {
-  let validationArray = ["email", "password", "confirmPassword"];
+  let validationArray;
+  switch (req.url) {
+    case "/signup":
+      validationArray = ["email", "password", "confirmPassword"];
+      break;
+    case "/login":
+      validationArray = ["email", "password", "confirmPassword"];
+      break;
+    default:
+      return sendErrorMessage(
+        new AppError(404, "unsuccessful", "Invalid url requested"),
+        req,
+        res
+      );
+  }
+  //   let validationArray = ["email", "password", "confirmPassword"];
   let result = validationArray.every((key) => {
     return req.body[key] && req.body[key].trim().length;
   });
@@ -73,7 +86,18 @@ const isEmailUnique = (req, res, next) => {
   next();
 };
 
+const generatePassHash = async (req, res, next) => {
+  const password = req.body.password;
+  const salt = await bcrypt.genSalt(10);
+  const hash = await bcrypt.hash(password, salt);
+
+  req.body.passHash = hash;
+  next();
+};
+
+// export middlewares
 module.exports.checkRequestBody = checkRequestBody;
 module.exports.checkConfirmPassword = checkConfirmPassword;
 module.exports.isEmailUnique = isEmailUnique;
 module.exports.isEmailValid = isEmailValid;
+module.exports.generatePassHash = generatePassHash;
