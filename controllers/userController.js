@@ -4,6 +4,8 @@ const bcrypt = require("bcryptjs");
 const fs = require("fs");
 const path = require("path");
 
+const confirmHash = require("../helper/confirmHash");
+
 let fileName = path.join(__dirname, "../data", "users.json");
 let users = JSON.parse(fs.readFileSync(fileName, "utf-8"));
 
@@ -40,17 +42,12 @@ const loginUser = (req, res, next) => {
     return user.email == email;
   });
 
-  bcrypt.compare(password, user.password, function (err, result) {
-    if (err) {
-      res.status(500).json({ message: "Internal Error" });
-      return err;
-    }
-    if (!result) {
-      res.status(201).json({ message: "You Entered wrong Password" });
-      return;
-    }
-    res.status(201).json({ message: "Login Successful" });
-  });
+  const result = confirmHash(password, user.password);
+  if (!result) {
+    res.status(201).json({ message: "You Entered wrong Password" });
+    return;
+  }
+  res.status(201).json({ message: "Login Successful" });
 };
 
 // export controllers
