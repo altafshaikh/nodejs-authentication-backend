@@ -4,7 +4,6 @@ const path = require("path");
 
 const AppError = require("../helper/appErrorClass");
 const sendErrorMessage = require("../helper/sendError");
-const sendResponse = require("../helper/sendResponse");
 
 let fileName = path.join(__dirname, "../data", "users.json");
 let users = JSON.parse(fs.readFileSync(fileName, "utf-8"));

@@ -22,5 +22,11 @@
     "email": "shaikh3@me.com",
     "password": "$2a$10$ffw01LZJIyyhZwF7F7DoWeyb008l2dWEK8IjNJ5ttpIQtZQnyG7UK",
     "createdAt": "Wed Dec 09 2020 19:58:10 GMT+0530 (India Standard Time)"
+  },
+  {
+    "userID": "c7oc9yggfq00",
+    "email": "tony@avengers.com",
+    "password": "$2a$10$/Z7lUqBEeglVFbSoT0SYzuO8MZvtrLeAgeJPSBQOP5C5eeCmNPFPe",
+    "createdAt": "Wed Dec 09 2020 20:23:47 GMT+0530 (India Standard Time)"
   }
 ]
