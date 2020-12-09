@@ -4,6 +4,10 @@ const bcrypt = require("bcryptjs");
 const fs = require("fs");
 const path = require("path");
 
+const AppError = require("../helper/appErrorClass");
+const sendErrorMessage = require("../helper/sendError");
+const sendResponse = require("../helper/sendResponse");
+
 let fileName = path.join(__dirname, "../data", "users.json");
 let users = JSON.parse(fs.readFileSync(fileName, "utf-8"));
 
@@ -14,18 +18,27 @@ const checkRequestBody = (req, res, next) => {
   });
 
   if (!result) {
-    res.status(400).json({ message: "Invalid Request" });
-    return err;
+    return sendErrorMessage(
+      new AppError(400, "unsuccessful", "invalid body"),
+      req,
+      res
+    );
   }
   next();
 };
 
 const checkConfirmPassword = (req, res, next) => {
   if (req.body.password !== req.body.confirmPassword) {
-    res
-      .status(400)
-      .json({ message: "Password and Confirm password not match" });
-    return err;
+    res.status(400);
+    return sendErrorMessage(
+      new AppError(
+        400,
+        "unsuccessful",
+        "Password and Confirm password not match"
+      ),
+      req,
+      res
+    );
   }
   next();
 };
@@ -35,8 +48,11 @@ const isEmailValid = (req, res, next) => {
   const isValid = re.test(req.body.email.toLowerCase());
 
   if (!isValid) {
-    res.status(400).json({ message: "Email is not valid" });
-    return err;
+    return sendErrorMessage(
+      new AppError(400, "unsuccessful", "Email is not valid"),
+      req,
+      res
+    );
   }
   next();
 };
@@ -48,7 +64,11 @@ const isEmailUnique = (req, res, next) => {
 
   if (user) {
     res.status(400).json({ message: "User already registered" });
-    return err;
+    return sendErrorMessage(
+      new AppError(400, "unsuccessful", "User already registered"),
+      req,
+      res
+    );
   }
   next();
 };

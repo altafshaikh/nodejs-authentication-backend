@@ -5,9 +5,11 @@ const {
   generatePassHash,
 } = require("../controllers/userController");
 
+const { isEmailValid } = require("../middleware/userMiddleware");
+
 const userRoute = express.Router();
 
-userRoute.route("/signup").post(generatePassHash, signUpUser);
+userRoute.route("/signup").post(generatePassHash, isEmailValid, signUpUser);
 userRoute.route("/login").post(loginUser);
 
 module.exports = userRoute;
