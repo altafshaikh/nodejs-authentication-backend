@@ -58,8 +58,11 @@ const loginUser = async (req, res, next) => {
       res.cookie("jwt", jwtToken);
       sendResponse(200, "Successful", { jwt: jwtToken }, req, res);
     } catch (err) {
-      console.log(err);
-      return err;
+      return sendErrorMessage(
+        new AppError(500, "Internal Error", "Unable to complete the Request"),
+        req,
+        res
+      );
     }
   } catch (error) {
     return sendErrorMessage(
