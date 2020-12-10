@@ -1,11 +1,11 @@
 const express = require("express");
 const path = require("path");
-const dontenv = require("dotenv");
+const dotenv = require("dotenv");
 
 const userRouter = require("./routes/userRoutes");
 const protectRoute = require("./middleware/protectRoute");
 
-dontenv.config({ path: ".env" });
+dotenv.config({ path: ".env" });
 const PORT = process.env.PORT;
 
 const app = express();
