@@ -2,6 +2,11 @@ const User = require("../models/user");
 const bcrypt = require("bcryptjs");
 const fs = require("fs");
 const path = require("path");
+const { generateToken } = require("../helper/createJwtToken");
+const dontenv = require("dotenv");
+dontenv.config({ path: ".env" });
+
+const privateKey = process.env.JWT_SECRET;
 
 const AppError = require("../helper/appErrorClass");
 const sendErrorMessage = require("../helper/sendError");
@@ -33,6 +38,7 @@ const loginUser = async (req, res, next) => {
       req.body.password,
       req.currentUser.password
     );
+
     if (!result) {
       res.status(201).json({ message: "You Entered wrong Password" });
 
@@ -42,7 +48,19 @@ const loginUser = async (req, res, next) => {
         res
       );
     }
-    sendResponse(201, "Login Successful", {}, req, res);
+
+    try {
+      let jwtToken = await generateToken(
+        { email: req.currentUser.email },
+        process.env.JWT_SECRET,
+        { expiresIn: "1h" }
+      );
+      res.cookie("jwt", jwtToken);
+      sendResponse(200, "Successful", { jwt: jwtToken }, req, res);
+    } catch (err) {
+      console.log(err);
+      return err;
+    }
   } catch (error) {
     return sendErrorMessage(
       new AppError(500, "Internal Error", "Unable to complete the Request"),

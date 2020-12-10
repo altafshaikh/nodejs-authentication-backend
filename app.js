@@ -1,4 +1,5 @@
 const express = require("express");
+const path = require("path");
 const dontenv = require("dotenv");
 
 const userRouter = require("./routes/userRoutes");
@@ -9,6 +10,7 @@ const PORT = process.env.PORT;
 const app = express();
 app.use(express.json());
 
+app.use(express.static(path.join(__dirname, "public")));
 app.use("/users", userRouter);
 
 app.listen(PORT, () => {

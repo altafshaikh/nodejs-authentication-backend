@@ -1,5 +1,5 @@
 const sendResponse = (statusCode, status, data, req, res) => {
-  if (data.length) {
+  if (data) {
     res.status(statusCode).json({ status: status, data: [data] });
   } else {
     res.status(statusCode).json({ status: status });
