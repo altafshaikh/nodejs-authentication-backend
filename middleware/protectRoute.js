@@ -28,9 +28,7 @@ const protectRoute = async (req, res, next) => {
       res
     );
   }
-  // let { email: currentUser } = users.find((user) => {
-  //   return user.email == payload.email;
-  // });
+
   let currentUser = users.find((user) => {
     return user.email == payload.email;
   });
