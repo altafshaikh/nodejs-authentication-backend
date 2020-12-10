@@ -29,7 +29,8 @@ const protectRoute = async (req, res, next) => {
     );
   }
 
-  let currentUser = users.find((user) => {
+  //added alias to email
+  let { email: currentUser } = users.find((user) => {
     return user.email == payload.email;
   });
 

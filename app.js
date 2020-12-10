@@ -15,6 +15,7 @@ app.use(express.static(path.join(__dirname, "public")));
 
 app.use("/users", userRouter);
 app.get("/dashboard", protectRoute, (req, res) => {
+  console.log(req.currentUser);
   res.sendFile(path.join(__dirname, "public", "dashboard.html"));
 });
 
