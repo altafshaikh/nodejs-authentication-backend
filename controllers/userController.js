@@ -2,15 +2,15 @@ const User = require("../models/user");
 const bcrypt = require("bcryptjs");
 const fs = require("fs");
 const path = require("path");
-const { generateToken } = require("../helper/createJwtToken");
 const dontenv = require("dotenv");
-dontenv.config({ path: ".env" });
-
-const privateKey = process.env.JWT_SECRET;
 
 const AppError = require("../helper/appErrorClass");
 const sendErrorMessage = require("../helper/sendError");
 const sendResponse = require("../helper/sendResponse");
+const { generateToken } = require("../helper/createJwtToken");
+
+dontenv.config({ path: ".env" });
+const privateKey = process.env.JWT_SECRET;
 
 let fileName = path.join(__dirname, "../data", "users.json");
 let users = JSON.parse(fs.readFileSync(fileName, "utf-8"));
@@ -52,7 +52,7 @@ const loginUser = async (req, res, next) => {
     try {
       let jwtToken = await generateToken(
         { email: req.currentUser.email },
-        process.env.JWT_SECRET,
+        privateKey,
         { expiresIn: "1h" }
       );
       res.cookie("jwt", jwtToken);

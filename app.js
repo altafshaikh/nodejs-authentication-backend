@@ -3,6 +3,7 @@ const path = require("path");
 const dontenv = require("dotenv");
 
 const userRouter = require("./routes/userRoutes");
+const protectRoute = require("./middleware/protectRoute");
 
 dontenv.config({ path: ".env" });
 const PORT = process.env.PORT;
@@ -12,11 +13,10 @@ app.use(express.json());
 
 app.use(express.static(path.join(__dirname, "public")));
 
-app.get("/dashboard", (req, res, next) => {
-  res.status(200);
+app.use("/users", userRouter);
+app.get("/dashboard", protectRoute, (req, res) => {
   res.sendFile(path.join(__dirname, "public", "dashboard.html"));
 });
-app.use("/users", userRouter);
 
 app.listen(PORT, () => {
   console.log(`Listeninig on Port http://localhost:${PORT}`);
