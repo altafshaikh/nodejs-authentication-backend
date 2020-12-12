@@ -42,7 +42,7 @@ const authUser = async (req, res, next) => {
     );
   }
   // check verification
-  req.currentUser = currentUser;
+  req.currentUser = { email: currentUser, firstName: "altaf" };
   // give access
   next();
 };
