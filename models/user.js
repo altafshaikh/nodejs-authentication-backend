@@ -1,7 +1,7 @@
 const uniquid = require("uniquid");
 
 class User {
-  constructor(email, hash) {
+  constructor(email, hash, firstName, lastName, username) {
     this.userID = uniquid();
     this.email = email;
     this.firstName = firstName;

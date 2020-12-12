@@ -30,7 +30,7 @@ const authUser = async (req, res, next) => {
   }
 
   //added alias to email
-  let { email: currentUser } = users.find((user) => {
+  let { email: currentUser, firstName } = users.find((user) => {
     return user.email == payload.email;
   });
 
@@ -42,7 +42,7 @@ const authUser = async (req, res, next) => {
     );
   }
   // check verification
-  req.currentUser = { email: currentUser, firstName: "altaf" };
+  req.currentUser = { email: currentUser, firstName: firstName };
   // give access
   next();
 };

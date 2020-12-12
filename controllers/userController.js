@@ -16,9 +16,9 @@ let fileName = path.join(__dirname, "../data", "users.json");
 let users = JSON.parse(fs.readFileSync(fileName, "utf-8"));
 
 const signUpUser = (req, res, next) => {
-  const { email, passHash } = req.body;
+  const { email, passHash, firstName, lastName, username } = req.body;
 
-  const user = new User(email, passHash);
+  const user = new User(email, passHash, firstName, lastName, username);
   users.push(user);
   fs.writeFile(fileName, JSON.stringify(users, null, 2), (err) => {
     if (err) {

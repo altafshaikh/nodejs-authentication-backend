@@ -12,7 +12,14 @@ const checkRequestBody = (req, res, next) => {
   let validationArray;
   switch (req.url) {
     case "/signup":
-      validationArray = ["email", "password", "confirmPassword"];
+      validationArray = [
+        "email",
+        "password",
+        "confirmPassword",
+        "firstName",
+        "lastName",
+        "username",
+      ];
       break;
     case "/login":
       validationArray = ["email", "password"];
@@ -95,6 +102,21 @@ const isEmailUnique = (req, res, next) => {
   next();
 };
 
+const isUsernamelUnique = (req, res, next) => {
+  const user = users.find((user) => {
+    return user.username == req.body.username;
+  });
+
+  if (user) {
+    return sendErrorMessage(
+      new AppError(400, "unsuccessful", "username already talken"),
+      req,
+      res
+    );
+  }
+  next();
+};
+
 const generatePassHash = async (req, res, next) => {
   const password = req.body.password;
   const salt = await bcrypt.genSalt(10);
@@ -125,6 +147,7 @@ const isUserRegistered = (req, res, next) => {
 module.exports.checkRequestBody = checkRequestBody;
 module.exports.checkConfirmPassword = checkConfirmPassword;
 module.exports.isEmailUnique = isEmailUnique;
+module.exports.isUsernamelUnique = isUsernamelUnique;
 module.exports.isEmailValid = isEmailValid;
 module.exports.generatePassHash = generatePassHash;
 module.exports.isUserRegistered = isUserRegistered;

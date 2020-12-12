@@ -2,79 +2,19 @@
   {
     "userID": "c7o5258zepc0",
     "email": "altaf@me.com",
+    "firstName": "altaf",
+    "lastName": "shaikh",
+    "username": "altafshaikh",
     "password": "$2a$10$C1FwC34dbNxZypoir13TSe0nJWPOdDca4ZnHb8PmqYbYwGRsLEgPW",
     "createdAt": "Wed Dec 09 2020 14:44:27 GMT+0530 (India Standard Time)"
   },
   {
-    "userID": "c7oblaspbcg0",
-    "email": "shaikh@me.com",
-    "password": "$2a$10$asmcKZpPMFNUqudgkxn7a.ijaYzlOqNlh7p5aJUkeDoGIwFuHOXLe",
-    "createdAt": "Wed Dec 09 2020 19:51:35 GMT+0530 (India Standard Time)"
-  },
-  {
-    "userID": "c7obmfj6bo00",
-    "email": "shaikh2@me.com",
-    "password": "$2a$10$nGI25Gl.bpp4ptphWtuJ6.YH.kJ88PIXheFhL28IT3oBjzUrU/cSS",
-    "createdAt": "Wed Dec 09 2020 19:53:04 GMT+0530 (India Standard Time)"
-  },
-  {
-    "userID": "c7obqc13a680",
-    "email": "shaikh3@me.com",
-    "password": "$2a$10$ffw01LZJIyyhZwF7F7DoWeyb008l2dWEK8IjNJ5ttpIQtZQnyG7UK",
-    "createdAt": "Wed Dec 09 2020 19:58:10 GMT+0530 (India Standard Time)"
-  },
-  {
-    "userID": "c7oc9yggfq00",
-    "email": "tony@avengers.com",
-    "password": "$2a$10$/Z7lUqBEeglVFbSoT0SYzuO8MZvtrLeAgeJPSBQOP5C5eeCmNPFPe",
-    "createdAt": "Wed Dec 09 2020 20:23:47 GMT+0530 (India Standard Time)"
-  },
-  {
-    "userID": "c7oczqylkm80",
+    "userID": "c7qoq3np1ww0",
     "email": "hulk@avengers.com",
-    "password": "$2a$10$SYievBYGzNb1OPNBeyW/4.6OiwT.3x2VUJx9r7VrorDIuQWqKU3om",
-    "createdAt": "Wed Dec 09 2020 20:57:28 GMT+0530 (India Standard Time)"
-  },
-  {
-    "userID": "c7p9u9yu4940",
-    "email": "natasha@avengers.com",
-    "password": "$2a$10$atKyb2T/DqRC4zo3itWC8.zdJDJHlOw/YiLEAW05Xix5qTKXlhT9W",
-    "createdAt": "Thu Dec 10 2020 22:41:56 GMT+0530 (India Standard Time)"
-  },
-  {
-    "userID": "c7parqnze600",
-    "email": "altafshaikh@avengers.com",
-    "password": "$2a$10$iE.ggKALbl5vZv9eyJSG/uUYxw8F4rcApXHQUicSd/tk4g3ffQURG",
-    "createdAt": "Thu Dec 10 2020 23:25:39 GMT+0530 (India Standard Time)"
-  },
-  {
-    "userID": "c7pat1t8ptc0",
-    "email": "altafshaikh2@avengers.com",
-    "password": "$2a$10$5o7BOVGOHwuL4.g0F/RA5OeMr19/dybwjw1xBfKzwiYzcCiZ6EJWa",
-    "createdAt": "Thu Dec 10 2020 23:27:21 GMT+0530 (India Standard Time)"
-  },
-  {
-    "userID": "c7pav2d0emg0",
-    "email": "altafshaikh3@avengers.com",
-    "password": "$2a$10$J0SWwN6fHchf1kbOZTC0IOtGLjoJGUqkHmFvBAMy3Sp5swhrqZhIO",
-    "createdAt": "Thu Dec 10 2020 23:29:59 GMT+0530 (India Standard Time)"
-  },
-  {
-    "userID": "c7paw34esko0",
-    "email": "altafshaikh4@avengers.com",
-    "password": "$2a$10$btUh.lSoJq4mmOBHyZZGduJz.m/cD/UVxpEgwIGBtMI7pY9BIW6l2",
-    "createdAt": "Thu Dec 10 2020 23:31:19 GMT+0530 (India Standard Time)"
-  },
-  {
-    "userID": "17yxhn4y6fls",
-    "email": "altafshaikh5@avengers.com",
-    "password": "$2a$10$2hO2OqhNHrLMbBi6yUJfAeC9GdpFHoO29CK0qRpbX5sgEC9FBh02m",
-    "createdAt": "Thu Dec 10 2020 23:31:46 GMT+0530 (India Standard Time)"
-  },
-  {
-    "userID": "c7qi2opurtc0",
-    "email": "altafshaikh@gmail.com",
-    "password": "$2a$10$MxE3TZK/H.jINjRFe7Fg6uombpt5YuP4tsplG7R9qnamc/aKAsBV6",
-    "createdAt": "Sat Dec 12 2020 09:21:44 GMT+0530 (India Standard Time)"
+    "firstName": "hulk",
+    "lastName": "hulk",
+    "username": "hulk",
+    "password": "$2a$10$BRMBfYh9p3si9nsuMN8Esep5qA20hWYD.Q76EtjgJf0WjCIEe/BBa",
+    "createdAt": "Sat Dec 12 2020 14:34:26 GMT+0530 (India Standard Time)"
   }
 ]
