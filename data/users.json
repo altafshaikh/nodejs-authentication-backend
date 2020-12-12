@@ -70,5 +70,11 @@
     "email": "altafshaikh5@avengers.com",
     "password": "$2a$10$2hO2OqhNHrLMbBi6yUJfAeC9GdpFHoO29CK0qRpbX5sgEC9FBh02m",
     "createdAt": "Thu Dec 10 2020 23:31:46 GMT+0530 (India Standard Time)"
+  },
+  {
+    "userID": "c7qi2opurtc0",
+    "email": "altafshaikh@gmail.com",
+    "password": "$2a$10$MxE3TZK/H.jINjRFe7Fg6uombpt5YuP4tsplG7R9qnamc/aKAsBV6",
+    "createdAt": "Sat Dec 12 2020 09:21:44 GMT+0530 (India Standard Time)"
   }
 ]

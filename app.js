@@ -19,7 +19,11 @@ app.use(express.static(path.join(__dirname, "public")));
 
 app.use("/users", userRouter);
 app.post("/auth", authUser, (req, res, next) => {
-  res.status(200).json({ authorize: true });
+  if (req.currentUser) {
+    res.status(200).json({ authorize: true });
+  } else {
+    res.status(401).json({ authorize: false });
+  }
 });
 app.get("/dashboard", protectRoute, (req, res) => {
   console.log(req.currentUser);
