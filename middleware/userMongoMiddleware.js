@@ -1,5 +1,3 @@
-const bcrypt = require("bcryptjs");
-
 const AppError = require("../helper/appErrorClass");
 const sendErrorMessage = require("../helper/sendError");
 const { verifyToken } = require("../helper/verifyJwtToken");
@@ -7,39 +5,123 @@ const { verifyToken } = require("../helper/verifyJwtToken");
 //model
 const Users = require("../models/users");
 
-const checkRequestBody = (req, res, next) => {
-  let validationArray;
-  switch (req.url) {
-    case "/signup":
-      validationArray = [
-        "email",
-        "password",
-        "confirmPassword",
-        "firstName",
-        "lastName",
-        "username",
-      ];
-      break;
-    case "/login":
-      validationArray = ["email", "password"];
-      break;
-    default:
+const isEmailUnique = (req, res, next) => {
+  Users.findOne({ email: req.body.email })
+    .then((user) => {
+      if (user) {
+        return sendErrorMessage(
+          new AppError(400, "unsuccessful", "User already registered"),
+          req,
+          res
+        );
+      }
+      next();
+    })
+    .catch((err) => {
       return sendErrorMessage(
-        new AppError(404, "unsuccessful", "Invalid url requested"),
+        new AppError(400, "unsuccessful", "Operation Failed"),
         req,
         res
       );
-  }
-  let result = validationArray.every((key) => {
-    return req.body[key] && req.body[key].trim().length;
-  });
+    });
+};
 
-  if (!result) {
+const isUsernamelUnique = (req, res, next) => {
+  Users.findOne({ username: req.body.username })
+    .then((user) => {
+      if (user) {
+        return sendErrorMessage(
+          new AppError(400, "unsuccessful", "username already taken"),
+          req,
+          res
+        );
+      }
+      next();
+    })
+    .catch((err) => {
+      return sendErrorMessage(
+        new AppError(400, "unsuccessful", "Operation Failed"),
+        req,
+        res
+      );
+    });
+};
+
+const isUserRegistered = (req, res, next) => {
+  const { email } = req.body;
+  Users.findOne({ email: email })
+    .then((user) => {
+      if (!user) {
+        return sendErrorMessage(
+          new AppError(400, "unsuccessful", "User not found with this email"),
+          req,
+          res
+        );
+      }
+      req.currentUser = user;
+      next();
+    })
+    .catch((err) => {
+      return sendErrorMessage(
+        new AppError(400, "unsuccessful", "Operation Failed"),
+        req,
+        res
+      );
+    });
+};
+
+const authUser = async (req, res, next) => {
+  let authHeader;
+  if (req.headers.authorization) {
+    authHeader = req.headers.authorization;
+  } else if (req.body.authorization) {
+    authHeader = req.body.authorization;
+  } else {
     return sendErrorMessage(
-      new AppError(400, "unsuccessful", "invalid body"),
+      new AppError(401, "Unsuccessful", "Please login or signup"),
       req,
       res
     );
   }
-  next();
+
+  // if headers are there
+  let jwtToken = authHeader.split(" ")[1];
+  let payload;
+  try {
+    payload = await verifyToken(jwtToken, process.env.JWT_SECRET);
+  } catch (err) {
+    return sendErrorMessage(
+      new AppError(401, "Unsuccesssul", "Invalid Token"),
+      req,
+      res
+    );
+  }
+  Users.findOne({ email: payload.email })
+    .then((user) => {
+      if (!user) {
+        return sendErrorMessage(
+          new AppError(401, "Unsuccesssul", "User not registered"),
+          req,
+          res
+        );
+      }
+      req.currentUser = { email: user.email, firstName: user.firstName };
+      // give access
+      next();
+    })
+    .catch((err) => {
+      return sendErrorMessage(
+        new AppError(400, "unsuccessful", "Operation Failed"),
+        req,
+        res
+      );
+    });
+};
+
+// export  middleware
+module.exports = {
+  isEmailUnique,
+  isUsernamelUnique,
+  isUserRegistered,
+  authUser,
 };

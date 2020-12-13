@@ -24,7 +24,7 @@ app.post("/auth", storageAdapter.middlewares.authUser, (req, res, next) => {
     res.status(401).json({});
   }
 });
-app.get("/dashboard", storageAdapter.middlewares.protectRoute, (req, res) => {
+app.get("/dashboard", storageAdapter.middlewares.authUser, (req, res) => {
   res.sendFile(path.join(__dirname, "public", "dashboard.html"));
 });
 

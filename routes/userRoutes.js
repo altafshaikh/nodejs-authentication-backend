@@ -3,15 +3,18 @@ const storageAdapter = require("../adapter/storageAdapter");
 
 const userRoute = express.Router();
 
-userRoute.route("/signup").post(
-  storageAdapter.middlewares.checkRequestBody,
-  storageAdapter.middlewares.checkConfirmPassword,
-  // storageAdapter.middlewares.validatePassword,
-  storageAdapter.middlewares.isEmailValid,
-  storageAdapter.middlewares.isEmailUnique,
-  storageAdapter.middlewares.generatePassHash,
-  storageAdapter.signUpUser
-);
+userRoute
+  .route("/signup")
+  .post(
+    storageAdapter.middlewares.checkRequestBody,
+    storageAdapter.middlewares.checkConfirmPassword,
+    storageAdapter.middlewares.validatePassword,
+    storageAdapter.middlewares.isEmailValid,
+    storageAdapter.middlewares.isEmailUnique,
+    storageAdapter.middlewares.isUsernamelUnique,
+    storageAdapter.middlewares.generatePassHash,
+    storageAdapter.signUpUser
+  );
 userRoute
   .route("/login")
   .post(

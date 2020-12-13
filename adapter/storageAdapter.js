@@ -32,7 +32,7 @@ if (STORAGE == "file") {
       console.log(err);
       throw err;
     });
-  class StorageAdapter extends UserFileController {}
+  class StorageAdapter extends UserMongoController {}
   storageAdapter = new StorageAdapter();
 } else {
   class StorageAdapter extends UserFileController {}
