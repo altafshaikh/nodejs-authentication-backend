@@ -5,7 +5,7 @@ dotenv.config({ path: ".env" });
 
 const STORAGE = process.env.STORAGE;
 const UserFileController = require("../controllers/userFileController");
-const UserMongoController = require("../controllers/UserMongoController");
+const UserMongoController = require("../controllers/userMongoController");
 
 var storageAdapter;
 

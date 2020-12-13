@@ -10,16 +10,19 @@ const sendResponse = require("../helper/sendResponse");
 const { generateToken } = require("../helper/createJwtToken");
 
 const {
-  checkRequestBody,
-  checkConfirmPassword,
-  validatePassword,
-  isEmailValid,
   isEmailUnique,
-  generatePassHash,
   isUserRegistered,
   authUser,
   protectRoute,
 } = require("../middleware/userFileMiddleware");
+
+const {
+  checkRequestBody,
+  checkConfirmPassword,
+  validatePassword,
+  isEmailValid,
+  generatePassHash,
+} = require("../middleware/commonMiddleware");
 
 dontenv.config({ path: ".env" });
 const privateKey = process.env.JWT_SECRET;
