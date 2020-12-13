@@ -2,35 +2,12 @@ const express = require("express");
 const path = require("path");
 const dotenv = require("dotenv");
 const cors = require("cors");
-const mongoose = require("mongoose");
 
 const userRouter = require("./routes/userRoutes");
 const storageAdapter = require("./adapter/storageAdapter");
 
 dotenv.config({ path: ".env" });
 const PORT = process.env.PORT;
-
-let dbURI;
-
-if (process.env.DEBUG) {
-  dbURI = process.env.LOCAL_DB_URL;
-} else {
-  dbURI = process.env.DATABASE_URL;
-}
-
-const connect = mongoose.connect(dbURI, {
-  useNewUrlParser: true,
-  useUnifiedTopology: true,
-});
-
-connect.then(
-  (db) => {
-    console.log("Connected Successfully to Mongodb Server");
-  },
-  (err) => {
-    console.log(err);
-  }
-);
 
 const app = express();
 

@@ -19,7 +19,7 @@ const {
   isUserRegistered,
   authUser,
   protectRoute,
-} = require("../middleware/userMiddleware");
+} = require("../middleware/userFileMiddleware");
 
 dontenv.config({ path: ".env" });
 const privateKey = process.env.JWT_SECRET;
