@@ -1,27 +1,23 @@
 const express = require("express");
-const { signUpUser, loginUser } = require("../controllers/userController");
-
-const {
-  checkRequestBody,
-  checkConfirmPassword,
-  validatePassword,
-  isEmailValid,
-  isEmailUnique,
-  generatePassHash,
-  isUserRegistered,
-} = require("../middleware/userMiddleware");
+const storageAdapter = require("../adapter/storageAdapter");
 
 const userRoute = express.Router();
 
 userRoute.route("/signup").post(
-  checkRequestBody,
-  checkConfirmPassword,
+  storageAdapter.middlewares.checkRequestBody,
+  storageAdapter.middlewares.checkConfirmPassword,
   // validatePassword,
-  isEmailValid,
-  isEmailUnique,
-  generatePassHash,
-  signUpUser
+  storageAdapter.middlewares.isEmailValid,
+  storageAdapter.middlewares.isEmailUnique,
+  storageAdapter.middlewares.generatePassHash,
+  storageAdapter.signUpUser
 );
-userRoute.route("/login").post(checkRequestBody, isUserRegistered, loginUser);
+userRoute
+  .route("/login")
+  .post(
+    storageAdapter.middlewares.checkRequestBody,
+    storageAdapter.middlewares.isUserRegistered,
+    storageAdapter.loginUser
+  );
 
 module.exports = userRoute;

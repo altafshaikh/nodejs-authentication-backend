@@ -7,9 +7,11 @@ const mongoose = require("mongoose");
 const userRouter = require("./routes/userRoutes");
 const protectRoute = require("./middleware/protectRoute");
 const authUser = require("./middleware/authUser");
+const adapter = require("./adapter/storageAdapter");
 
 dotenv.config({ path: ".env" });
 const PORT = process.env.PORT;
+
 let dbURI;
 
 if (process.env.DEBUG) {
