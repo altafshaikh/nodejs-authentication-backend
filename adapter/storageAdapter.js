@@ -38,4 +38,5 @@ if (STORAGE == "file") {
   class StorageAdapter extends UserFileController {}
   storageAdapter = new StorageAdapter();
 }
+
 module.exports = storageAdapter;
