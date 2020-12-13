@@ -12,7 +12,6 @@ const {
   isEmailUnique,
   isUserRegistered,
   authUser,
-  protectRoute,
 } = require("../middleware/userFileMiddleware");
 
 const {
@@ -40,7 +39,6 @@ class UserFileController {
       generatePassHash: generatePassHash,
       isUserRegistered: isUserRegistered,
       authUser: authUser,
-      protectRoute: protectRoute,
     };
   }
   signUpUser(req, res, next) {

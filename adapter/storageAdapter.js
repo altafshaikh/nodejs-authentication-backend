@@ -1,11 +1,11 @@
 const dotenv = require("dotenv");
 const mongoose = require("mongoose");
 
-dotenv.config({ path: ".env" });
-
-const STORAGE = process.env.STORAGE;
 const UserFileController = require("../controllers/userFileController");
 const UserMongoController = require("../controllers/userMongoController");
+
+dotenv.config({ path: ".env" });
+const STORAGE = process.env.STORAGE;
 
 var storageAdapter;
 

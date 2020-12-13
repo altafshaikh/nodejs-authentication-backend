@@ -17,6 +17,7 @@ app.use(express.json());
 app.use(express.static(path.join(__dirname, "public")));
 
 app.use("/users", userRouter);
+
 app.post("/auth", storageAdapter.middlewares.authUser, (req, res, next) => {
   if (req.currentUser) {
     res.status(200).json(req.currentUser);
@@ -24,6 +25,7 @@ app.post("/auth", storageAdapter.middlewares.authUser, (req, res, next) => {
     res.status(401).json({});
   }
 });
+
 app.get("/dashboard", storageAdapter.middlewares.authUser, (req, res) => {
   res.sendFile(path.join(__dirname, "public", "dashboard.html"));
 });

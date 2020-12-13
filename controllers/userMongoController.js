@@ -21,6 +21,7 @@ const {
   generatePassHash,
 } = require("../middleware/commonMiddleware");
 
+// mongoose model
 const Users = require("../models/users");
 
 dontenv.config({ path: ".env" });
