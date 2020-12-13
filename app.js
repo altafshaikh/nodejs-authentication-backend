@@ -5,9 +5,7 @@ const cors = require("cors");
 const mongoose = require("mongoose");
 
 const userRouter = require("./routes/userRoutes");
-const protectRoute = require("./middleware/protectRoute");
-const authUser = require("./middleware/authUser");
-const adapter = require("./adapter/storageAdapter");
+const storageAdapter = require("./adapter/storageAdapter");
 
 dotenv.config({ path: ".env" });
 const PORT = process.env.PORT;
@@ -42,15 +40,14 @@ app.use(express.json());
 app.use(express.static(path.join(__dirname, "public")));
 
 app.use("/users", userRouter);
-app.post("/auth", authUser, (req, res, next) => {
+app.post("/auth", storageAdapter.middlewares.authUser, (req, res, next) => {
   if (req.currentUser) {
     res.status(200).json(req.currentUser);
   } else {
     res.status(401).json({});
   }
 });
-app.get("/dashboard", protectRoute, (req, res) => {
-  console.log(req.currentUser);
+app.get("/dashboard", storageAdapter.middlewares.protectRoute, (req, res) => {
   res.sendFile(path.join(__dirname, "public", "dashboard.html"));
 });
 

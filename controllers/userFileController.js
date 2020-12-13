@@ -17,6 +17,8 @@ const {
   isEmailUnique,
   generatePassHash,
   isUserRegistered,
+  authUser,
+  protectRoute,
 } = require("../middleware/userMiddleware");
 
 dontenv.config({ path: ".env" });
@@ -35,6 +37,8 @@ class UserFileController {
       isEmailUnique: isEmailUnique,
       generatePassHash: generatePassHash,
       isUserRegistered: isUserRegistered,
+      authUser: authUser,
+      protectRoute: protectRoute,
     };
   }
   signUpUser(req, res, next) {
@@ -95,7 +99,5 @@ class UserFileController {
     }
   }
 }
-
-// const userFileController = new UserFileController();
 
 module.exports = UserFileController;

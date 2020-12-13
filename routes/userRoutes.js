@@ -6,7 +6,7 @@ const userRoute = express.Router();
 userRoute.route("/signup").post(
   storageAdapter.middlewares.checkRequestBody,
   storageAdapter.middlewares.checkConfirmPassword,
-  // validatePassword,
+  // storageAdapter.middlewares.validatePassword,
   storageAdapter.middlewares.isEmailValid,
   storageAdapter.middlewares.isEmailUnique,
   storageAdapter.middlewares.generatePassHash,
