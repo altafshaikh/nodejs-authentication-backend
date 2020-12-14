@@ -105,7 +105,11 @@ const authUser = async (req, res, next) => {
           res
         );
       }
-      req.currentUser = { email: user.email, firstName: user.firstName };
+      req.currentUser = {
+        email: user.email,
+        firstName: user.firstName,
+        _id: user._id,
+      };
       // give access
       next();
     })

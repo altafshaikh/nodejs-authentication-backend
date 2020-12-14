@@ -4,6 +4,10 @@ const Schema = mongoose.Schema;
 
 const userSchema = new Schema(
   {
+    userID: {
+      type: String,
+      default: uniquid(),
+    },
     firstName: {
       type: String,
       required: true,

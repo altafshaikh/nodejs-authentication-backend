@@ -53,9 +53,18 @@ class UserMongoController {
       username: username,
     })
       .then((user) => {
+        const { email, firstName, lastName, username } = user;
         res.status(200);
         res.setHeader("Content-Type", "application/json");
-        res.json({ status: "user added successfully", data: user });
+        res.json({
+          status: "user added successfully",
+          data: {
+            email: email,
+            firstName: firstName,
+            lastName: lastName,
+            username: username,
+          },
+        });
       })
       .catch((err) => {
         res.status(404);
