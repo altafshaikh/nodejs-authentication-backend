@@ -10,6 +10,7 @@ const { generateToken } = require("../helper/createJwtToken");
 
 const {
   isEmailUnique,
+  isUsernameUnique,
   isUserRegistered,
   authUser,
 } = require("../middleware/userFileMiddleware");
@@ -25,6 +26,8 @@ const {
 dontenv.config({ path: ".env" });
 const privateKey = process.env.JWT_SECRET;
 
+const User = require("../models/user");
+
 let fileName = path.join(__dirname, "../data", "users.json");
 let users = JSON.parse(fs.readFileSync(fileName, "utf-8"));
 
@@ -36,6 +39,7 @@ class UserFileController {
       validatePassword: validatePassword,
       isEmailValid: isEmailValid,
       isEmailUnique: isEmailUnique,
+      isUsernameUnique: isUsernameUnique,
       generatePassHash: generatePassHash,
       isUserRegistered: isUserRegistered,
       authUser: authUser,

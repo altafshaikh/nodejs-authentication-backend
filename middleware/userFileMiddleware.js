@@ -23,7 +23,7 @@ const isEmailUnique = (req, res, next) => {
   next();
 };
 
-const isUsernamelUnique = (req, res, next) => {
+const isUsernameUnique = (req, res, next) => {
   const user = users.find((user) => {
     return user.username == req.body.username;
   });
@@ -99,6 +99,6 @@ const authUser = async (req, res, next) => {
 };
 
 module.exports.isEmailUnique = isEmailUnique;
-module.exports.isUsernamelUnique = isUsernamelUnique;
+module.exports.isUsernameUnique = isUsernameUnique;
 module.exports.isUserRegistered = isUserRegistered;
 module.exports.authUser = authUser;

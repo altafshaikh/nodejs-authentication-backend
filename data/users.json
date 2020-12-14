@@ -25,5 +25,14 @@
     "username": "hulk2",
     "password": "$2a$10$Cjx79D4ZoM1OwcnEHKAzaOyZ0SaU4SeGYtl37rln3SdwwF3Z6vDNO",
     "createdAt": "Sun Dec 13 2020 10:15:06 GMT+0530 (India Standard Time)"
+  },
+  {
+    "userID": "c7s8srf6vw00",
+    "email": "hulk6@avengers.com",
+    "firstName": "hulk",
+    "lastName": "hulk",
+    "username": "hulk2",
+    "password": "$2a$10$x7hFrC6BwRg.Ttk6d98WuOZ3v5T6KCswmecbS6n06ObJw8IGkibrO",
+    "createdAt": "Mon Dec 14 2020 10:30:56 GMT+0530 (India Standard Time)"
   }
 ]

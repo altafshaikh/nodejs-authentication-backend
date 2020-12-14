@@ -11,7 +11,7 @@ userRoute
     storageAdapter.middlewares.validatePassword,
     storageAdapter.middlewares.isEmailValid,
     storageAdapter.middlewares.isEmailUnique,
-    storageAdapter.middlewares.isUsernamelUnique,
+    storageAdapter.middlewares.isUsernameUnique,
     storageAdapter.middlewares.generatePassHash,
     storageAdapter.signUpUser
   );

@@ -9,7 +9,7 @@ const { generateToken } = require("../helper/createJwtToken");
 const {
   isEmailUnique,
   isUserRegistered,
-  isUsernamelUnique,
+  isUsernameUnique,
   authUser,
 } = require("../middleware/userMongoMiddleware");
 
@@ -35,7 +35,7 @@ class UserMongoController {
       validatePassword: validatePassword,
       isEmailValid: isEmailValid,
       isEmailUnique: isEmailUnique,
-      isUsernamelUnique: isUsernamelUnique,
+      isUsernameUnique: isUsernameUnique,
       generatePassHash: generatePassHash,
       isUserRegistered: isUserRegistered,
       authUser: authUser,

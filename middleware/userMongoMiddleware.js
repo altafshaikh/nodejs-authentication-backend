@@ -26,7 +26,7 @@ const isEmailUnique = (req, res, next) => {
     });
 };
 
-const isUsernamelUnique = (req, res, next) => {
+const isUsernameUnique = (req, res, next) => {
   Users.findOne({ username: req.body.username })
     .then((user) => {
       if (user) {
@@ -121,7 +121,7 @@ const authUser = async (req, res, next) => {
 // export  middleware
 module.exports = {
   isEmailUnique,
-  isUsernamelUnique,
+  isUsernameUnique,
   isUserRegistered,
   authUser,
 };
