@@ -5,6 +5,7 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node app.js",
     "dev": "nodemon app.js"
   },
   "keywords": [
@@ -20,5 +21,8 @@
     "jsonwebtoken": "^8.5.1",
     "mongoose": "^5.11.7",
     "uniquid": "^1.1.4"
+  },
+  "engines": {
+    "node": "10.19.0"
   }
 }
