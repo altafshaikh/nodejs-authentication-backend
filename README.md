@@ -44,3 +44,28 @@ To learn more [refer this gist](https://gist.github.com/ialtafshaikh/8336df5d417
 
 [hosted backend server](https://node-authentication-backend.herokuapp.com/)
 
+## References
+
+- [mongoose quick start](https://mongoosejs.com/docs/index.html)
+- [mongoDB documentation reference](https://docs.mongodb.com/manual/introduction/)
+- [multer for file uploads](https://www.npmjs.com/package/multer)
+- [uniquid to generate unique ids](https://www.npmjs.com/package/uniqid)
+- [npm express](https://www.npmjs.com/package/express)
+- [multer and cloudinary blog](https://medium.com/@joeokpus/uploading-images-to-cloudinary-using-multer-and-expressjs-f0b9a4e14c54)
+- [dataUri package](https://www.npmjs.com/package/datauri)
+- [upload image to cloudinary in nodejs official doc](https://cloudinary.com/blog/node_js_file_upload_to_a_local_server_or_to_the_cloud)
+- [axios to make api calls](https://www.npmjs.com/package/axios)
+- [CORS module to talk between cross-origin resources](https://www.npmjs.com/package/cors)
+
+
+## Author
+
+* **Altaf Shaikh** - *work by* - [ialtafshaikh](https://github.com/ialtafshaikh)
+
+![altaf shaikh](https://raw.githubusercontent.com/ialtafshaikh/static-files/master/coollogo_com-327551664.png)
+
+
+## License
+
+This project is licensed under the MIT License - see the [LICENSE.md](LICENSE.md) file for details
+
