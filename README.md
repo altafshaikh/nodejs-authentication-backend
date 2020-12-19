@@ -22,3 +22,16 @@ An authentication and authorization backend server build using Express in NodeJS
 - can be used by any other service to authenticate and for authorization
 - hosted on heroku platform
 
+## Supported Routes
+
+```
+
+/signup : (method:post) - create user accout
+
+/login : (method:post) - get jwt token and authenticate yourself using the creds (email,password)
+
+/auth : to restrict the user from accessing the resources on route /blogs so send token in authorization header as bearer token
+
+
+```
+
