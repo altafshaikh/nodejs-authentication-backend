@@ -40,4 +40,7 @@ An authentication and authorization backend server build using Express in NodeJS
 To Host the Project I had used **Heroku Platform**. 
 To learn more [refer this gist](https://gist.github.com/ialtafshaikh/8336df5d417109b12c46bd20ccda4e17)
 
+## Live Demo of this Project
+
+[hosted backend server](https://node-authentication-backend.herokuapp.com/)
 
