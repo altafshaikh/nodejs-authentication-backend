@@ -18,8 +18,7 @@ An authentication and authorization backend server build using Express in NodeJS
 
 ## Additional Features
 
-- used cloud storage cloudinary to upload and store the file
-- used multer to accept multipart data
-- dataURI to convert the buffer into readable stream support by clodinary
-- authentication is done by the auth server and communication is done using axios api calls
-- hosted in heroku platform
+- can be scale to microservice architecture easily
+- can be used by any other service to authenticate and for authorization
+- hosted on heroku platform
+
