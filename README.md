@@ -22,6 +22,33 @@ An authentication and authorization backend server build using Express in NodeJS
 - can be used by any other service to authenticate and for authorization
 - hosted on heroku platform
 
+## Downloading and Running this Project Locally
+
+1. clone the repository
+```
+git clone https://github.com/ialtafshaikh/authentication-backend.git
+```
+2. add a ``.env`` file inside the root folder
+
+```
+PORT=3001
+JWT_SECRET=any random string
+LOCAL_DB_URL=your local mongo url
+DATABASE_URL=your_atlas_db_url(keep this empty is ur not provoding any url)
+DEBUG=true   // set true to use local db and false to use atlas
+STORAGE=mongodb  // to switch file storage or mongodb database (mongodb | file)
+```
+
+Sample for local
+```
+PORT=3001
+JWT_SECRET=RawSshCaaafuiokld
+LOCAL_DB_URL=mongodb://127.0.0.1:27017/auth
+DATABASE_URL=
+DEBUG=true  // set true to use local db and false to use atlas
+STORAGE=mongodb
+```
+
 ## Supported Routes
 
 ```
