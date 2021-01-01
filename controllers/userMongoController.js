@@ -80,7 +80,14 @@ class UserMongoController {
       );
 
       if (!result) {
-        res.status(201).json({ message: "You Entered wrong Password" });
+        res
+          .status(201)
+          .json({
+            status: {
+              status: "unsuccessful",
+              message: "You Entered wrong Password",
+            },
+          });
 
         return sendErrorMessage(
           new AppError(401, "unsuccessful", "You Entered wrong Password"),
