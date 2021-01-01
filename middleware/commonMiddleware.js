@@ -18,6 +18,9 @@ const checkRequestBody = (req, res, next) => {
     case "/login":
       validationArray = ["email", "password"];
       break;
+    case "/login/username":
+      validationArray = ["username", "password"];
+      break;
     default:
       return sendErrorMessage(
         new AppError(404, "unsuccessful", "Invalid url requested"),

@@ -23,4 +23,12 @@ userRoute
     storageAdapter.loginUser
   );
 
+userRoute
+  .route("/login/username")
+  .post(
+    storageAdapter.middlewares.checkRequestBody,
+    storageAdapter.middlewares.isUserRegistered,
+    storageAdapter.loginUser
+  );
+
 module.exports = userRoute;

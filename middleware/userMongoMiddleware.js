@@ -48,26 +48,52 @@ const isUsernameUnique = (req, res, next) => {
 };
 
 const isUserRegistered = (req, res, next) => {
-  const { email } = req.body;
-  Users.findOne({ email: email })
-    .then((user) => {
-      if (!user) {
+  const { email, username } = req.body;
+  if (typeof email === "undefined") {
+    Users.findOne({ username: username })
+      .then((user) => {
+        if (!user) {
+          return sendErrorMessage(
+            new AppError(
+              400,
+              "unsuccessful",
+              "User not found with this username"
+            ),
+            req,
+            res
+          );
+        }
+        req.currentUser = user;
+        next();
+      })
+      .catch((err) => {
         return sendErrorMessage(
-          new AppError(400, "unsuccessful", "User not found with this email"),
+          new AppError(400, "unsuccessful", "Operation Failed"),
           req,
           res
         );
-      }
-      req.currentUser = user;
-      next();
-    })
-    .catch((err) => {
-      return sendErrorMessage(
-        new AppError(400, "unsuccessful", "Operation Failed"),
-        req,
-        res
-      );
-    });
+      });
+  } else {
+    Users.findOne({ email: email })
+      .then((user) => {
+        if (!user) {
+          return sendErrorMessage(
+            new AppError(400, "unsuccessful", "User not found with this email"),
+            req,
+            res
+          );
+        }
+        req.currentUser = user;
+        next();
+      })
+      .catch((err) => {
+        return sendErrorMessage(
+          new AppError(400, "unsuccessful", "Operation Failed"),
+          req,
+          res
+        );
+      });
+  }
 };
 
 const authUser = async (req, res, next) => {
