@@ -2,10 +2,6 @@
 
 An authentication and authorization backend server build using Express in NodeJS and uses MongoDB to store user dabtabase.
 
-## Getting Started
-
-- [Check the blog frontend application uses this auth backend](https://github.com/ialtafshaikh/blog-frontend)
-- [Check the todo frontend application uses this auth backend](https://github.com/ialtafshaikh/todo-app-frontend)
 
 ## Features
 
@@ -26,7 +22,7 @@ An authentication and authorization backend server build using Express in NodeJS
 
 1. clone the repository
 ```
-git clone https://github.com/ialtafshaikh/authentication-backend.git
+git clone https://github.com/altafshaikh/nodejs-authentication-backend.git
 ```
 2. add a ``.env`` file inside the root folder
 
@@ -67,9 +63,6 @@ STORAGE=mongodb
 To Host the Project I had used **Heroku Platform**. 
 To learn more [refer this gist](https://gist.github.com/ialtafshaikh/8336df5d417109b12c46bd20ccda4e17)
 
-## Live Demo of this Project
-
-[hosted backend server](https://node-authentication-backend.herokuapp.com/)
 
 ## References
 
@@ -84,7 +77,7 @@ To learn more [refer this gist](https://gist.github.com/ialtafshaikh/8336df5d417
 
 ## Author
 
-* **Altaf Shaikh** - *work by* - [ialtafshaikh](https://github.com/ialtafshaikh)
+* **Altaf Shaikh** - *work by* - [altafshaikh](https://github.com/altafshaikh)
 
 ![altaf shaikh](https://raw.githubusercontent.com/ialtafshaikh/static-files/master/coollogo_com-327551664.png)
 
